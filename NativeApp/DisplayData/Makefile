@@ -1,9 +1,9 @@
 TARGET = DisplayData
 SRCS = main.c display.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -O2 -Wall -lpthread -lwiringPi
+CFLAGS = -O2 
 
-.PHONY: all clean install uninstall
+.PHONY: all clean
 
 all: $(TARGET)
 $(TARGET): $(OBJS)
