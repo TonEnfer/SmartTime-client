@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-import os
-import os.path
 import json
-
+import sqlite3
+db = sqlite3.connect("../../DB/db.sqlite")
+cursor = db.cursor()
 print("Content-type: text/html\n")
-f = open('/etc/timezone',"r")
-tzname =  f.read().replace('\n','')
+cursor.execute("SELECT Value FROM Parameters WHERE name = 'TZ'")
+tzname = cursor.fetchone()
+
 res = json.dumps({'TZ':tzname})
 print(res)
