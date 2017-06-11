@@ -8,5 +8,5 @@ print("Content-type: text/html\n")
 cursor.execute("SELECT Value FROM Parameters WHERE name = 'TZ'")
 tzname = cursor.fetchone()
 
-res = json.dumps({'TZ':tzname})
+res = json.dumps({'TZ':tzname[0]})
 print(res)
