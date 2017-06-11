@@ -26,7 +26,8 @@ cursor.execute('''INSERT INTO Parameters VALUES
 					('MaxH', '80'),
 					('MinH', '30'),
 					('MaxP', '740'),
-					('MinP', '720')''')
+					('MinP', '720'),
+					('NTP', '0.europe.pool.ntp.org')''')
 pr = subprocess.Popen("timedatectl list-timezones", shell=True, stdout=subprocess.PIPE)
 res = pr.communicate()[0].decode("utf-8").replace('\n','\n\r')
 a = res.split()
