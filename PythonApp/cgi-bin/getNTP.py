@@ -4,9 +4,8 @@ import json
 import sqlite3
 db = sqlite3.connect("../DB/db.sqlite")
 cursor = db.cursor()
-print("Content-type: text/html\n")
-cursor.execute("SELECT Value FROM Parameters WHERE name = 'NTP'")
-ntp = cursor.fetchone()
-
-res = json.dumps({'NTP':ntp[0]})
+ntp = cursor.execute("SELECT Value FROM Parameters WHERE name = 'NTP'").fetchone()
+db.close()
+res = json.dumps({'ntp':ntp[0]})
+print("Content-type: application/json\n")
 print(res)

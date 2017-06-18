@@ -11,7 +11,7 @@ cursor = db.cursor()
 tznames = [str(i)[2:-3] for i in cursor.execute("SELECT name FROM TimeZone")]
 # = cursor.fetchone()
 #print(tzname)
-res = '{TZ : ['
+res = '{"tz" : ['
 for tz in tznames:
 	res += ("\"" + tz + "\", ")
 res = res[:-2] + "] }"

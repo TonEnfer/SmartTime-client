@@ -8,7 +8,7 @@ db = sqlite3.connect("../DB/db.sqlite")
 cursor = db.cursor()
 
 form = cgi.FieldStorage()
-NTP = form.getfirst("NTP", '')
+NTP = form.getfirst("ntp", '')
 
 res = "error"
 if(NTP != ''):
@@ -17,6 +17,6 @@ if(NTP != ''):
 	res = NTP
 	db.commit()
 db.close()
-res = json.dumps({"RESULT":res})
-print("Content-type: text/html\n")
+res = json.dumps({"result":res})
+print("Content-type: application/json\n")
 print(res)

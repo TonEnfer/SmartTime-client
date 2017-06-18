@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
+import sys
+import codecs
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 import json
 import sqlite3
 db = sqlite3.connect("../DB/db.sqlite")
 cursor = db.cursor()
-print("Content-type: text/html\n")
+
 cursor.execute("SELECT Value FROM Parameters WHERE name = 'TimerEn'")
 status = int(cursor.fetchone()[0])
 if(status):
-	status = 'Enable'
+	status = 'on'
 else:
-	status = 'Disable'
-res = json.dumps({'Timer':status})
+	status = 'off'
+print("Content-type: application/json\n")
+res = json.dumps({'timer':status})
 print(res)
