@@ -16,9 +16,9 @@ int main(int argc,char ** argv)
 	switch (type)
 	{
 		case (TIME):{
-		uint8_t h;
-		uint8_t m;
-		uint8_t s;
+		uint8_t h = 0;
+		uint8_t m = 0;
+		uint8_t s = 0;
 		sscanf(dt,"%hhu:%hhu:%hhu",&h,&m,&s);
 		uint8_t h1 = h/10;
 		uint8_t h2 = h%10;
@@ -37,8 +37,8 @@ int main(int argc,char ** argv)
 			disableDots();
 		break;}
 		case (DATE):{
-		uint8_t d,m;
-		uint16_t y;
+		uint8_t d = 0, m = 0;
+		uint16_t y = 0;
 		sscanf(dt,"%hhu.%hhu.%hu",&d,&m,&y);
 		uint8_t d1,d2,m1,m2,y1,y2,y3,y4;
 		d1 = d/10;
@@ -56,7 +56,7 @@ int main(int argc,char ** argv)
 			getByteCode(d1)
 			};
 		writeData(data,4);
-		delay(1000);
+		delay(10000);
 		uint8_t yearData [4]= 	{
 			getByteCode(y4),
 			getByteCode(y3),

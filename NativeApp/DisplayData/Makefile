@@ -1,7 +1,7 @@
 TARGET = DisplayData
 SRCS = main.c display.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -O2 
+CFLAGS = -O2 -Wall -lwiringPi -lpthread
 
 .PHONY: all clean
 

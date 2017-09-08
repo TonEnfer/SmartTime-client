@@ -1,6 +1,6 @@
 #ifndef _MAIN
 #define _MAIN
-#define PC
+//#define PC
 #ifndef PC
 #include <wiringPi.h>
 #else
