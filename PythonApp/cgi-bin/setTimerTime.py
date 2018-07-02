@@ -9,7 +9,7 @@ cursor = db.cursor()
 
 
 form = cgi.FieldStorage()
-time = form.getfirst("Time", '')
+time = form.getfirst("time", '')
 def isint(s):
     try:
         int(s)
@@ -24,6 +24,6 @@ if(time != '' and isint(time) and int(time) >= 0):
 	db.close()
 	res = 'ok'
 
-res = json.dumps({"RESULT":res})
+res = json.dumps({"result":res})
 print("Content-type: text/html\n")
 print(res)

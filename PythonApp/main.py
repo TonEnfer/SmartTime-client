@@ -6,7 +6,7 @@ import subprocess
 from subprocess import *
 
 def getTime():
-	db = sqlite3.connect("../DB/db.sqlite")
+	db = sqlite3.connect("/var/www/smartTime/DB/db.sqlite")
 	cursor = db.cursor()
 	tz = cursor.execute('select value from Parameters where name = "TZ"').fetchall()[0][0]
 	offset = int(cursor.execute('select offset from TimeZone where name = "{}"'.format(tz)).fetchall()[0][0])
@@ -20,10 +20,10 @@ def getTime():
 	dt = datetime.datetime.utcnow()
 	time = (dt + sign*(datetime.timedelta(hours=h,minutes=m))).time()
 	time = time.strftime(fmt)
-	return time  
+	return time
 
 def main():
-	proc = Popen(["../NativeApp/DisplayData/DisplayData","0","{}".format(getTime())], stdout=PIPE);
+	proc = Popen(["/var/www/smartTime/NativeApp/DisplayData/DisplayData","0","{}".format(getTime())], stdout=PIPE);
 	#safeprint(proc.communicate()[0].decode('cp1251'))
 	
 if __name__ == "__main__":
